@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="J G Emmanuel">
+  <meta name="dcterms.date" content="2021-02-13">
+  <title>OAuth 2.0 Security Best Current Practice</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../tufte-css/tufte.min.css">
+  <link rel="stylesheet" href="../tufte.pandoc.css">
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: true
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>section>dl{padding-left:0 !important;}</style>
+</head>
+<body>
+<article>
+<header>
+<h1 class="title">OAuth 2.0 Security Best Current Practice</h1>
+<p class="subtitle">Summarisation of Recommendations Made by IETF</p>
+<p class="byline">2021-02-13 &ndash; J G Emmanuel</p>
+</header>
+<section>
+<p>OAuth 2.0 Security Best Current Practice <span class="citation"
+data-cites="ietf-oauth-security-topics-19">[1]</span> provides updated
+security recommendations to reinforce security advice introduced in RFC
+6749 <span class="citation" data-cites="rfc6749">[2]</span>, RFC 6750
+<span class="citation" data-cites="rfc6750">[3]</span>, and RFC 6819
+<span class="citation" data-cites="rfc6819">[4]</span>. This document
+summarises these recommendations; glossary can be found towards the
+end.</p>
+</section>
+<section id="recommendations" class="level2">
+<h2>Recommendations</h2>
+<p>AS <em>must</em> use exact string matching<span
+class="sidenote-wrapper"><label for="sn-0" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-0" class="margin-toggle"/><span
+class="marginnote">Simple string comparison <span class="citation"
+data-cites="rfc3986">[5, Sec. 6.2.1]</span> prevents leakage of
+authorisation codes and access tokens; helps detect mix-up
+attacks.
+
+</span></span> when comparing client redirect URI against pre-registered
+URI.</p>
+<p>AS<span
+class="sidenote-wrapper"><label for="sn-1" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-1" class="margin-toggle"/><span
+class="marginnote">Loopback redirection as per RFC 8252 <span
+class="citation" data-cites="rfc8252">[6, Sec. 7.3]</span>.
+
+</span></span> <em>must</em> allow variable port numbers to native apps
+that use <code>localhost</code> URI.</p>
+<p>Client and AS <em>must not</em> expose open redirect<span
+class="sidenote-wrapper"><label for="sn-2" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-2" class="margin-toggle"/><span
+class="marginnote">Remove open redirect <span class="citation"
+data-cites="cwe601">[7]</span> endpoints to prevent exfiltration of
+authorisation codes and access tokens.
+
+</span></span> endpoints.</p>
+<p>Client <em>must</em> prevent CSRF<span
+class="sidenote-wrapper"><label for="sn-3" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-3" class="margin-toggle"/><span
+class="marginnote">Cross-Site Request Forgery (CSRF) <span
+class="citation" data-cites="cwe352">[8]</span>
+
+</span></span> to the redirection endpoint utilising any of these three
+key strategies:</p>
+<ol>
+<li>PKCE<span
+class="sidenote-wrapper"><label for="sn-4" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-4" class="margin-toggle"/><span
+class="marginnote">Proof Key for Code Exchange (PKCE) <span
+class="citation" data-cites="rfc7636">[9]</span>
+
+</span></span> alongside Authorisation Grant</li>
+<li><code>nonce</code> parameter with OIDC<span
+class="sidenote-wrapper"><label for="sn-5" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-5" class="margin-toggle"/><span
+class="marginnote">OpenID Connect <span class="citation"
+data-cites="oidc">[10]</span>
+
+</span></span></li>
+<li>One-time use CSRF tokens carried in the state parameter that are
+securely bound to the user agent.</li>
+</ol>
+<p>Client <em>should</em> use <code>iss</code> parameter as a
+countermeasure,</p>
+<ul>
+<li>As highlighted in OAuth 2.0 Authorisation Server Issuer
+Identification <span class="citation"
+data-cites="ietf-oauth-iss-auth-resp-05">[11]</span></li>
+<li>Use an alternative countermeasure based on an <code>iss</code> value
+in the authorisation response (such as the <code>iss</code> Claim in the
+ID Token in <span class="citation" data-cites="oidc">[10]</span> or in
+<span class="citation" data-cites="jarm">[12]</span> responses),
+processing it as described in <span class="citation"
+data-cites="ietf-oauth-iss-auth-resp-05">[11]</span></li>
+<li>In the absence of these options, clients <em>may</em> instead use
+distinct redirect URIs to identify authorisation endpoints and token
+endpoints, as per <span class="citation"
+data-cites="ietf-oauth-security-topics-19">[1, Sec. 4.4.2]</span>.</li>
+</ul>
+<p>AS that redirects a request potentially containing user credentials
+<em>must</em> avoid forwarding them accidentally<span
+class="sidenote-wrapper"><label for="sn-6" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-6" class="margin-toggle"/><span
+class="marginnote"><span class="citation"
+data-cites="ietf-oauth-security-topics-19">[1, Sec. 4.11]</span>
+
+</span></span>. To this end, AS <em>must not</em> use the HTTP status
+code <code>307</code> for redirection and <em>should</em> use HTTP
+status code <code>303</code> for all HTTP redirection.</p>
+<p>Client <em>must</em> prevent replay<span
+class="sidenote-wrapper"><label for="sn-7" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-7" class="margin-toggle"/><span
+class="marginnote">Replay attacks <span class="citation"
+data-cites="cwe294">[13]</span>
+
+</span></span> of authorisation codes:</p>
+<ul>
+<li>Public clients <em>must</em> use PKCE</li>
+<li>Confidential clients,
+<ul>
+<li>Use of PKCE is <em>recommended</em></li>
+<li>OIDC <em>may</em> use <code>nonce</code> parameter and the
+respective Claim in the ID Token<span
+class="sidenote-wrapper"><label for="sn-8" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-8" class="margin-toggle"/><span
+class="marginnote"><span class="citation"
+data-cites="ietf-oauth-security-topics-19">[1, Sec. 4.5.3.2]</span>; ID
+Token <span class="citation" data-cites="oidc">[10, Sec. 2]</span>;
+Claim <span class="citation" data-cites="rfc7519">[14, Sec.
+4]</span>
+
+</span></span> instead.</li>
+</ul></li>
+</ul>
+<p>PKCE challenge or OIDC <code>nonce</code> <em>must</em> be
+transaction-specific and securely bound to the client and the user agent
+in which the transaction began.</p>
+<p>Client <em>should</em> use PKCE code challenge methods<span
+class="sidenote-wrapper"><label for="sn-9" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-9" class="margin-toggle"/><span
+class="marginnote">Currently, <code>S256</code> is the only such
+method.
+
+</span></span> that do not expose the PKCE verifier in the authorisation
+request.</p>
+<p>AS <em>must</em> support PKCE.</p>
+<p>AS <em>must</em> provide a way<span
+class="sidenote-wrapper"><label for="sn-10" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-10" class="margin-toggle"/><span
+class="marginnote">Recommends AS metadata element
+<code>code_challenge_methods_supported</code>.
+
+</span></span> to detect their support for PKCE.</p>
+<p>AS <em>must</em> mitigate PKCE Downgrade Attacks<span
+class="sidenote-wrapper"><label for="sn-11" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-11" class="margin-toggle"/><span
+class="marginnote">Only accept requests containing
+<code>code_verifier</code> parameter only if <code>code_challenge</code>
+parameter was present in the corresponding authorisation request.
+
+</span></span>.</p>
+<p>Client <em>should</em> use the response type <code>code</code><span
+class="sidenote-wrapper"><label for="sn-12" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-12" class="margin-toggle"/><span
+class="marginnote">Response type <code>code</code> for authorisation
+code grant type.
+
+</span></span> or any other response type that causes AS to issue access
+tokens in the token response (e.g. <code>code id_token</code>).</p>
+<p>Client <em>should not</em> use the response type <code>token</code>
+or any other response type<span
+class="sidenote-wrapper"><label for="sn-13" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-13" class="margin-toggle"/><span
+class="marginnote">Response type <code>token</code> for implicit grant
+type. Such response types are vulnerable to access token capture and
+replay.
+
+</span></span> that issue access tokens in the authorisation
+response.</p>
+<p>AS and RS <em>should</em> use mechanisms for sender-constraining
+access tokens<span
+class="sidenote-wrapper"><label for="sn-14" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-14" class="margin-toggle"/><span
+class="marginnote"><span class="citation"
+data-cites="ietf-oauth-security-topics-19">[1, Sec.
+4.9.1.1.2]</span>
+
+</span></span>.</p>
+<p>Refresh tokens for public clients <em>must</em> be sender-constrained
+or rotated<span
+class="sidenote-wrapper"><label for="sn-15" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-15" class="margin-toggle"/><span
+class="marginnote">RFC 6749 <span class="citation"
+data-cites="rfc6749">[2, Sec. 4.13]</span> already mandates
+sender-containing refresh tokens for confidential clients.
+
+</span></span>.</p>
+<p>Access token privileges <em>should</em> be restricted to the minimum
+required for the particular application or use case.</p>
+<p>Access tokens <em>should</em> be audience restricted, preferably to a
+single RS.</p>
+<p>RS <em>must</em> refuse to serve a particular request if the
+accompanying access token wasn’t meant to be used for that RS.</p>
+<p>Client and AS <em>may</em> utilise the parameters <code>scope</code>
+or <code>resource</code> to determine<span
+class="sidenote-wrapper"><label for="sn-16" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-16" class="margin-toggle"/><span
+class="marginnote"><code>scope</code> <span class="citation"
+data-cites="rfc6749">[2]</span>; <code>resource</code> <span
+class="citation" data-cites="rfc8707">[15]</span>
+
+</span></span> the RS they want to access.</p>
+<p>Access tokens <em>should</em> be restricted to certain resources and
+actions on RS.</p>
+<p>RS <em>must</em> refuse to serve unauthorised requests to
+resources.</p>
+<p>Client and AS <em>may</em> utilise the parameter <code>scope</code>
+and <code>authorization_details</code> to determine<span
+class="sidenote-wrapper"><label for="sn-17" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-17" class="margin-toggle"/><span
+class="marginnote"><code>authorization_details</code> <span
+class="citation" data-cites="ietf-oauth-rar-10">[16]</span>
+
+</span></span> those resources and/or actions.</p>
+<p>RO password credentials grant <em>must not</em> be used<span
+class="sidenote-wrapper"><label for="sn-18" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-18" class="margin-toggle"/><span
+class="marginnote">Exposes the credentials of RO to the client.
+
+</span></span>.</p>
+<p>AS <em>should</em> use client authentication; <em>recommended</em> to
+use asymmetric methods<span
+class="sidenote-wrapper"><label for="sn-19" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-19" class="margin-toggle"/><span
+class="marginnote">e.g. mTLS <span class="citation"
+data-cites="rfc8705">[17]</span> or <code>private_key_jwt</code> <span
+class="citation" data-cites="oidc">[10]</span>. When asymmetric methods
+are used, AS do not need to store sensitive symmetric keys, making these
+methods more robust against a number of attacks.
+
+</span></span> for authentication.</p>
+<p><em>Recommended</em> that AS publish OAuth metadata according to RFC
+8414<span
+class="sidenote-wrapper"><label for="sn-20" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-20" class="margin-toggle"/><span
+class="marginnote">RFC 8414 <span class="citation"
+data-cites="rfc8414">[18]</span>
+
+</span></span> and that clients make use of this metadata to configure
+themselves.</p>
+<p>AS <em>should not</em> allow clients to influence their
+<code>client_id</code> or sub value or any other Claim.</p>
+<p><em>Recommended</em> to use end-to-end TLS<span
+class="sidenote-wrapper"><label for="sn-21" class="margin-toggle">&#8853;</label><input type="checkbox" id="sn-21" class="margin-toggle"/><span
+class="marginnote">For reverse proxies, cf. <span class="citation"
+data-cites="ietf-oauth-security-topics-19">[1, Sec. 4.12]</span>.
+
+</span></span>.</p>
+<p>Authorisation responses <em>must not</em> be transmitted over
+unencrypted network connections.</p>
+<p>AS <em>must not</em> allow redirect URIs that use <code>http</code>
+scheme except for native clients that use Loopback Interface
+Redirection.</p>
+</section>
+<section id="glossary" class="level2">
+<h2>Glossary</h2>
+<dl>
+<dt>AS</dt>
+<dd>
+Authorisation server
+</dd>
+<dt>CSRF</dt>
+<dd>
+Cross-site request forgery
+</dd>
+<dt>IETF</dt>
+<dd>
+Internet engineering task force
+</dd>
+<dt>RO</dt>
+<dd>
+Resource owner
+</dd>
+<dt>RS</dt>
+<dd>
+Resource server
+</dd>
+<dt>OIDC</dt>
+<dd>
+OpenID connect
+</dd>
+<dt>PKCE</dt>
+<dd>
+Proof key for code exchange
+</dd>
+<dt>URI</dt>
+<dd>
+Uniform resource identifier
+</dd>
+<dt>URL</dt>
+<dd>
+Uniform resource locator
+</dd>
+</dl>
+</section>
+<section id="references" class="level2 unnumbered">
+<h2 class="unnumbered">References</h2>
+<div id="refs" class="references csl-bib-body" role="doc-bibliography">
+<div id="ref-ietf-oauth-security-topics-19" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[1] </div><div class="csl-right-inline">T.
+Lodderstedt, J. Bradley, A. Labunets, and D. Fett, <span>‘<span>OAuth
+2.0 Security Best Current Practice</span>’</span>, Internet Engineering
+Task Force; Internet Engineering Task Force, Internet-Draft
+draft-ietf-oauth-security-topics-19, Dec. 2021 [Online]. Available: <a
+href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-19">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-security-topics-19</a></div>
+</div>
+<div id="ref-rfc6749" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[2] </div><div class="csl-right-inline">D.
+Hardt, <span>‘<span>The OAuth 2.0 Authorization
+Framework</span>’</span>. RFC 6749; RFC Editor, Oct-2012 [Online].
+Available: <a
+href="https://www.rfc-editor.org/info/rfc6749">https://www.rfc-editor.org/info/rfc6749</a></div>
+</div>
+<div id="ref-rfc6750" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[3] </div><div class="csl-right-inline">M.
+Jones and D. Hardt, <span>‘<span>The OAuth 2.0 Authorization Framework:
+Bearer Token Usage</span>’</span>. RFC 6750; RFC Editor, Oct-2012
+[Online]. Available: <a
+href="https://www.rfc-editor.org/info/rfc6750">https://www.rfc-editor.org/info/rfc6750</a></div>
+</div>
+<div id="ref-rfc6819" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[4] </div><div class="csl-right-inline">T.
+Lodderstedt, M. McGloin, and P. Hunt, <span>‘<span class="nocase">OAuth
+2.0 Threat Model and Security Considerations</span>’</span>. RFC 6819;
+RFC Editor, Jan-2013 [Online]. Available: <a
+href="https://www.rfc-editor.org/info/rfc6819">https://www.rfc-editor.org/info/rfc6819</a></div>
+</div>
+<div id="ref-rfc3986" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[5] </div><div class="csl-right-inline">T.
+Berners-Lee, R. T. Fielding, and L. M. Masinter, <span>‘<span>Uniform
+Resource Identifier (URI): Generic Syntax</span>’</span>. RFC 3986; RFC
+Editor, Jan-2005 [Online]. Available: <a
+href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a></div>
+</div>
+<div id="ref-rfc8252" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[6] </div><div class="csl-right-inline">W.
+Denniss and J. Bradley, <span>‘<span class="nocase">OAuth 2.0 for Native
+Apps</span>’</span>. RFC 8252; RFC Editor, Oct-2017 [Online]. Available:
+<a
+href="https://www.rfc-editor.org/info/rfc8252">https://www.rfc-editor.org/info/rfc8252</a></div>
+</div>
+<div id="ref-cwe601" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[7] </div><div
+class="csl-right-inline"><span>‘<span class="nocase">URL Redirection to
+Untrusted Site (<span>“Open Redirect”</span>)</span>’</span>. CWE-601;
+The MITRE Corporation, Oct-2021 [Online]. Available: <a
+href="https://cwe.mitre.org/data/definitions/601.html">https://cwe.mitre.org/data/definitions/601.html</a>.
+[Accessed: 13-Feb-2022]</div>
+</div>
+<div id="ref-cwe352" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[8] </div><div
+class="csl-right-inline"><span>‘<span>Cross-Site Request Forgery
+(CSRF)</span>’</span>. CWE-352; The MITRE Corporation, Jul-2021
+[Online]. Available: <a
+href="https://cwe.mitre.org/data/definitions/352.html">https://cwe.mitre.org/data/definitions/352.html</a>.
+[Accessed: 13-Feb-2022]</div>
+</div>
+<div id="ref-rfc7636" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[9] </div><div class="csl-right-inline">N.
+Sakimura, J. Bradley, and N. Agarwal, <span>‘<span class="nocase">Proof
+Key for Code Exchange by OAuth Public Clients</span>’</span>. RFC 7636;
+RFC Editor, Sep-2015 [Online]. Available: <a
+href="https://www.rfc-editor.org/info/rfc7636">https://www.rfc-editor.org/info/rfc7636</a></div>
+</div>
+<div id="ref-oidc" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[10] </div><div class="csl-right-inline">N.
+Sakimura, J. Bradley, and M. Jones, <span>‘<span class="nocase">OpenID
+Connect Core 1.0 incorporating errata set 1</span>’</span>. 08-Nov-2014
+[Online]. Available: <a
+href="https://openid.net/specs/openid-connect-core-1_0.html">https://openid.net/specs/openid-connect-core-1_0.html</a></div>
+</div>
+<div id="ref-ietf-oauth-iss-auth-resp-05" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[11] </div><div class="csl-right-inline">K.
+M. zu Selhausen and D. Fett, <span>‘<span>OAuth 2.0 Authorization Server
+Issuer Identification</span>’</span>, Internet Engineering Task Force;
+Internet Engineering Task Force, Internet-Draft
+draft-ietf-oauth-iss-auth-resp-05, Jan. 2022 [Online]. Available: <a
+href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-iss-auth-resp-05">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-iss-auth-resp-05</a></div>
+</div>
+<div id="ref-jarm" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[12] </div><div class="csl-right-inline">T.
+Lodderstedt and B. Campbell, <span>‘<span class="nocase">Financial-grade
+API: JWT Secured Authorization Response Mode for OAuth 2.0
+(JARM)</span>’</span>. 17-Oct-2018 [Online]. Available: <a
+href="https://openid.net/specs/openid-financial-api-jarm.html">https://openid.net/specs/openid-financial-api-jarm.html</a></div>
+</div>
+<div id="ref-cwe294" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[13] </div><div
+class="csl-right-inline"><span>‘<span class="nocase">Authentication
+Bypass by Capture-replay</span>’</span>. CWE-294; The MITRE Corporation,
+Oct-2021 [Online]. Available: <a
+href="https://cwe.mitre.org/data/definitions/294.html">https://cwe.mitre.org/data/definitions/294.html</a>.
+[Accessed: 13-Feb-2022]</div>
+</div>
+<div id="ref-rfc7519" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[14] </div><div class="csl-right-inline">M.
+Jones, J. Bradley, and N. Sakimura, <span>‘<span>JSON Web Token
+(JWT)</span>’</span>. RFC 7519; RFC Editor, May-2015 [Online].
+Available: <a
+href="https://www.rfc-editor.org/info/rfc7519">https://www.rfc-editor.org/info/rfc7519</a></div>
+</div>
+<div id="ref-rfc8707" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[15] </div><div class="csl-right-inline">B.
+Campbell, J. Bradley, and H. Tschofenig, <span>‘<span
+class="nocase">Resource Indicators for OAuth 2.0</span>’</span>. RFC
+8707; RFC Editor, Feb-2020 [Online]. Available: <a
+href="https://www.rfc-editor.org/info/rfc8707">https://www.rfc-editor.org/info/rfc8707</a></div>
+</div>
+<div id="ref-ietf-oauth-rar-10" class="csl-entry"
+role="doc-biblioentry">
+<div class="csl-left-margin">[16] </div><div class="csl-right-inline">T.
+Lodderstedt, J. Richer, and B. Campbell, <span>‘<span>OAuth 2.0 Rich
+Authorization Requests</span>’</span>, Internet Engineering Task Force;
+Internet Engineering Task Force, Internet-Draft draft-ietf-oauth-rar-10,
+Jan. 2022 [Online]. Available: <a
+href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-rar-10">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-rar-10</a></div>
+</div>
+<div id="ref-rfc8705" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[17] </div><div class="csl-right-inline">B.
+Campbell, J. Bradley, N. Sakimura, and T. Lodderstedt, <span>‘<span
+class="nocase">OAuth 2.0 Mutual-TLS Client Authentication and
+Certificate-Bound Access Tokens</span>’</span>. RFC 8705; RFC Editor,
+Feb-2020 [Online]. Available: <a
+href="https://www.rfc-editor.org/info/rfc8705">https://www.rfc-editor.org/info/rfc8705</a></div>
+</div>
+<div id="ref-rfc8414" class="csl-entry" role="doc-biblioentry">
+<div class="csl-left-margin">[18] </div><div class="csl-right-inline">M.
+Jones, N. Sakimura, and J. Bradley, <span>‘<span>OAuth 2.0 Authorization
+Server Metadata</span>’</span>. RFC 8414; RFC Editor, Jun-2018 [Online].
+Available: <a
+href="https://www.rfc-editor.org/info/rfc8414">https://www.rfc-editor.org/info/rfc8414</a></div>
+</div>
+</div>
+</section>
+</article>
+</body>
+</html>
