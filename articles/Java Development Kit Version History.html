@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="J G Emmanuel">
+  <meta name="dcterms.date" content="2021-04-05">
+  <title>Java Development Kit Version History</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">q { quotes: "“" "”" "‘" "’"; }</style>
+  <link rel="stylesheet" href="../tufte-css/tufte.min.css">
+  <link rel="stylesheet" href="../tufte.pandoc.css">
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: true
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>.jdkn>ul,.jdkr>ul,.jdkd>ul{padding-left:0;}.jdkn li,.jdkr li,.jdkd li{list-style-type:none;}.jdkn a{color:#068b78;}.jdkr a{color:#a21232;}.jdkd a{color:#e47312;}</style>
+</head>
+<body>
+<article>
+<header>
+<h1 class="title">Java Development Kit Version History</h1>
+<p class="byline">2021-04-05 &ndash; J G Emmanuel</p>
+</header>
+<section>
+<p>The outlined changes in the major releases of Java Development Kit
+(JDK) were referred from <a
+href="https://www.oracle.com/java/technologies/javase/jdk-relnotes-index.html">Oracle’s
+release notes</a>.</p>
+</section>
+<section id="jdk-18" class="level2">
+<h2>JDK 18</h2>
+<div class="jdkn">
+<ul>
+<li><a href="https://openjdk.java.net/jeps/408">New JEP</a>: Simple Web
+Server</li>
+<li><a href="https://openjdk.java.net/jeps/413">New JEP</a>: Code
+Snippets in Java API Documentation</li>
+<li><a href="https://openjdk.java.net/jeps/400">New JEP</a>: UTF-8 by
+Default</li>
+<li><a href="https://openjdk.java.net/jeps/418">New JEP</a>:
+Internet-Address Resolution SPI</li>
+<li><a href="https://openjdk.java.net/jeps/416">New JEP</a>:
+Re-implement Core Reflection With Method Handles</li>
+<li><a href="https://openjdk.java.net/jeps/420">New JEP (Second
+Preview)</a>: Pattern Matching for <code>switch</code></li>
+<li><a href="https://openjdk.java.net/jeps/419">New JEP (Second
+Incubator)</a>: Foreign Function &amp; Memory API</li>
+<li><a href="https://openjdk.java.net/jeps/417">New JEP (Third
+Incubator)</a>: Vector API</li>
+</ul>
+</div>
+<div class="jdkn">
+<ul>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8267186">New</a>:
+ZGC Supports String Deduplication</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8272609">New</a>:
+SerialGC Supports String Deduplication</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8267185">New</a>:
+ParallelGC Supports String Deduplication</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8272234">New</a>:
+Passing Originating Elements From Filer to
+<code>JavaFileManager</code></li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8270490">New</a>:
+<code>Charset.forName()</code> Taking fallback Default Value</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8231640">New</a>:
+System Property to Control the Default Date Comment Written Out by
+<code>java.util.Properties::store</code> Methods</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8273157">New</a>:
+<code>printError</code>, <code>printWarning</code>, and
+<code>printNote</code> methods on <code>Messager</code></li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8140442">New</a>:
+Method to Get Outermost Type Element</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8224922">New</a>:
+Map from an Element to its <code>JavaFileObject</code></li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8275308">New</a>:
+Mapping between <code>SourceVersion</code> and
+<code>Runtime.Version</code></li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8254106">New</a>:
+Improve Compilation Replay</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8272773">New</a>:
+Configurable Card Table Card Size</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8275056">New</a>:
+Allow G1 Heap Regions up to 512MB</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8266936">New</a>:
+JDK Flight Recorder Event for Finalization</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8255409">New</a>:
+SunPKCS11 Provider Now Supports Some PKCS#11 v3.0 APIs</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8267108">New</a>:
+Alternate <code>Subject.getSubject</code> and <code>doAs</code> APIs
+Created That Do Not Depend on Security Manager APIs</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8225181">New</a>:
+KeyStore Has a <code>getAttributes</code> Method</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8274471">New</a>:
+Support for RSASSA-PSS in OCSP Response</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8272163">New</a>:
+Option <code>-version</code> Added to <code>keytool</code> and
+<code>jarsigner</code> Commands</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8275252">New</a>:
+Migrate <code>cacerts</code> From JKS to Password-Less PKCS12</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8231107">New</a>:
+Allow Store Password to Be Null When Saving a PKCS12 KeyStore</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8264849">New</a>:
+SunPKCS11 Provider Supports AES Cipher With KW and KWP Modes if
+Supported by PKCS11 Library</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8202056">New</a>:
+Expand checks of <code>javac</code>’s serial lint warning</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8275786">New</a>:
+Options to Include Script Files in Generated Documentation</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8189591">New</a>:
+<code>@SuppressWarnings</code> for DocLint Messages</li>
+</ul>
+</div>
+<div class="jdkr">
+<ul>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8225082">Removed</a>:
+IdenTrust Root Certificate</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8225083">Removed</a>:
+Google’s GlobalSign Root Certificate</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8273102">Removed</a>:
+Empty <code>finalize()</code> Methods in <code>java.desktop</code>
+Module</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8260428">Removed</a>:
+Support for Pre JDK 1.4 <code>DatagramSocketImpl</code>
+Implementations</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8274227">Removed</a>:
+<code>impl.prefix</code> JDK System Property Usage From
+<code>InetAddress</code></li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8253119">Removed</a>:
+Legacy <code>PlainSocketImpl</code> and
+<code>PlainDatagramSocketImpl</code> Implementations</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8274656">Removed</a>:
+<code>default_checksum</code> and <code>safe_checksum_type</code> From
+<code>krb5.conf</code></li>
+</ul>
+</div>
+<div class="jdkd">
+<ul>
+<li><a href="https://openjdk.java.net/jeps/192">Deprecated</a>:
+<code>Finalization</code> for Removal</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8267108">Deprecated</a>:
+<code>Subject::doAs</code> for Removal</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8277863">Deprecated</a>:
+<code>sun.misc.Unsafe</code> Methods That Return Offsets</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8277861">Deprecated</a>:
+Terminally Deprecated <code>Thread.stop</code></li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8017163">Deprecated</a>:
+Obsoleted Product Options <code>-XX:G1RSetRegionEntries</code> and
+<code>-XX:G1RSetSparseRegionEntries</code></li>
+</ul>
+</div>
+</section>
+<section id="jdk-17" class="level2">
+<h2>JDK 17</h2>
+<div class="jdkn">
+<ul>
+<li><a href="https://openjdk.java.net/jeps/409">New JEP</a>: Sealed
+Classes</li>
+<li><a href="https://openjdk.java.net/jeps/382">New JEP</a>: macOS
+Rendering Pipeline</li>
+<li><a href="https://openjdk.java.net/jeps/356">New JEP</a>: Enhanced
+Pseudo-Random Number Generators</li>
+<li><a href="https://openjdk.java.net/jeps/415">New JEP</a>: Implement
+Context-Specific Deserialization Filters</li>
+<li><a href="https://openjdk.java.net/jeps/391">New JEP</a>: macOS /
+AArch64 Port</li>
+<li><a href="https://openjdk.java.net/jeps/406">New JEP (Preview)</a>:
+Pattern Matching for switch</li>
+<li><a href="https://openjdk.java.net/jeps/412">New JEP (Incubator)</a>:
+Foreign Function &amp; Memory API</li>
+</ul>
+</div>
+<div class="jdkn">
+<ul>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8182043">New</a>:
+API for Accessing Large Icons</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8237352">New</a>:
+<code>DatagramSocket</code> Can Be Used Directly to Join Multicast
+Groups</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8030048">New</a>:
+Support for <code>UserDefinedFileAttributeView</code> on macOS</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8254145">New</a>:
+Modernization of Ideal Graph Visualizer</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8267126">New</a>:
+Source Details in Error Messages</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8263468">New</a>:
+Page for <q>New API</q> and Improved <q>Deprecated</q> Page</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8264208">New</a>:
+Console <code>Charset</code> API</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8261160">New</a>:
+JDK Flight Recorder Event for Deserialization</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8265989">New</a>:
+System Property for Native Character Encoding Name</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8266846">New</a>:
+<code>java.time.InstantSource</code></li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8251989">New</a>:
+Hex Formatting and Parsing Utility</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8259316">New</a>:
+Experimental Compiler Blackholes Support</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8266074">New</a>:
+Class Hierarchy Analysis Implementation in the HotSpot JVM</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8229517">New</a>:
+Unified Logging Supports Asynchronous Log Flushing</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8266858">New</a>:
+macOS on ARM Early Access Available</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8260693">New</a>:
+Support for Specifying a Signer in Keytool <code>-genkeypair</code>
+Command</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8248268">New</a>:
+SunJCE Provider Supports KW and KWP Modes With AES Cipher</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8240256">New</a>:
+SunPKCS11 configuration properties</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8255410">New</a>:
+SunPKCS11 Provider Supports ChaCha20-Poly1305 Cipher and ChaCha20
+<code>KeyGenerator</code> if Supported by PKCS11 Library</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8217633">New</a>:
+Configurable Extensions With System Properties</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8262389">New</a>:
+Use <code>permitted_enctypes</code> if <code>default_tkt_enctypes</code>
+or <code>default_tgs_enctypes</code> is not present</li>
+<li><a href="https://bugs.openjdk.java.net/browse/JDK-8260388">New</a>:
+<q>Related Packages</q> on a Package Summary Page</li>
+</ul>
+</div>
+<div class="jdkr">
+<ul>
+<li><a href="https://openjdk.java.net/jeps/403">Removed</a>: Strongly
+Encapsulate JDK Internals</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8225081">Removed</a>:
+Telia Company’s Sonera Class2 CA Certificate</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8243287">Removed</a>:
+<code>sun.misc.Unsafe::defineAnonymousClass</code></li>
+<li><a href="https://openjdk.java.net/jeps/407">Removed</a>: RMI
+Activation</li>
+<li><a href="https://openjdk.java.net/jeps/410">Removed</a>:
+Experimental AOT and JIT Compiler</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8225082">Removed</a>:
+IdenTrust Root Certificate</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8274215">Removed</a>:
+Google’s GlobalSign Root Certificate</li>
+</ul>
+</div>
+<div class="jdkd">
+<ul>
+<li><a href="https://openjdk.java.net/jeps/398">Deprecated</a>: Applet
+API for Removal</li>
+<li><a href="https://openjdk.java.net/jeps/411">Deprecated</a>: Security
+Manager for Removal</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8139348">Deprecated</a>:
+3DES and RC4 in Kerberos</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8235139">Deprecated</a>:
+Socket Implementation Factory Mechanism</li>
+<li><a
+href="https://bugs.openjdk.java.net/browse/JDK-8268241">Deprecated</a>:
+JVM TI Heap functions 1.0</li>
+</ul>
+</div>
+</section>
+<section id="jdk-16" class="level2">
+<h2>JDK 16</h2>
+<div class="jdkn">
+<ul>
+<li><a href="https://openjdk.java.net/jeps/376">New JEP</a>: ZGC
+Concurrent Stack Processing</li>
+<li><a href="https://openjdk.java.net/jeps/380">New JEP</a>: Unix domain
+sockets</li>
+<li><a href="https://openjdk.java.net/jeps/387">New JEP</a>: Elastic
+Metaspace</li>
+<li><a href="https://openjdk.java.net/jeps/390">New JEP</a>: Warnings
+for Value-based Classes</li>
+<li><a href="https://openjdk.java.net/jeps/392">New JEP</a>: Packaging
+Tool</li>
+<li><a href="https://openjdk.java.net/jeps/394">New JEP</a>: Pattern
+Matching for <code>instanceof</code></li>
+<li><a href="https://openjdk.java.net/jeps/395">New JEP</a>:
+Records</li>
+<li><a href="https://openjdk.java.net/jeps/396">New JEP</a>: Strongly
+Encapsulate JDK Internals by Default</li>
+<li><a href="https://openjdk.java.net/jeps/397">New JEP (Second
+Preview)</a>: Sealed Classes</li>
+<li><a href="https://openjdk.java.net/jeps/393">New JEP (Third
+Incubator)</a>: Foreign-Memory Access API</li>
+<li><a href="https://openjdk.java.net/jeps/338">New JEP (Incubator)</a>:
+Vector API</li>
+<li><a href="https://openjdk.java.net/jeps/389">New JEP (Incubator)</a>:
+Foreign Linker API</li>
+</ul>
+</div>
+<div class="jdkn">
+<ul>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8159746">New</a>:
+<code>InvocationHandler::invokeDefault</code> Method for Proxy’s Default
+Method Support</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8166596">New</a>: TLS
+Support for the EdDSA Signature Algorithm</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8172366">New</a>:
+SUN, SunRsaSign, and SunEC Providers Supports SHA-3 Based Signature
+Algorithms</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8180352">New</a>: Add
+<code>Stream.toList()</code> Method</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8218021">New</a>:
+<code>jarsigner</code> Preserves POSIX File Permission and symlink
+Attributes</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8236926">New</a>:
+Concurrently Uncommit Memory in G1</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8242068">New</a>:
+Signed JAR Support for RSASSA-PSS and EdDSA</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8242332">New</a>:
+SunPKCS11 Provider Supports SHA-3 Related Algorithms</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8244148">New</a>:
+<code>-trustcacerts</code> and <code>-keystore</code> Options to
+<code>keytool</code> <code>-printcert</code> and <code>-printcrl</code>
+Commands</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8247781">New</a>: Day
+Period Support Added to <code>java.time</code> Formats</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8254631">New</a>:
+Improve Encoding of TLS Application-Layer Protocol Negotiation (ALPN)
+Values</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8256508">New</a>:
+Improved <code>CompileCommand</code> Flag</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8257602">New</a>:
+<code>jdk.ObjectAllocationSample</code> Event Enabled by Default</li>
+</ul>
+</div>
+<div class="jdkr">
+<ul>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8253965">Removed</a>:
+<code>java.awt.PeerFixer</code></li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8255616">Removed</a>:
+Experimental Features AOT and Graal JIT</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8256718">Removed</a>:
+Deprecated Tracing Flags Are Obsolete and Must Be Replaced With Unified
+Logging Equivalents</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8243559">Removed</a>:
+Root Certificates with 1024-bit Keys</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8235710">Removed</a>:
+Legacy Elliptic Curves</li>
+</ul>
+</div>
+<div class="jdkd">
+<ul>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8256643">Deprecated</a>:
+Terminally Deprecated <code>ThreadGroup</code> <code>stop</code>,
+<code>destroy</code>, <code>isDestroyed</code>, <code>setDaemon</code>
+and <code>isDaemon</code></li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8257572">Deprecated</a>:
+Parts of the Signal-Chaining API Are Deprecated</li>
+<li><a
+href="https://bugs.java.com/view_bug.do?bug_id=JDK-8241003">Deprecated</a>:
+Deprecated the <code>java.security.cert</code> APIs That Represent DNs
+as Principal or String Objects</li>
+</ul>
+</div>
+</section>
+<section id="jdk-15" class="level2">
+<h2>JDK 15</h2>
+<div class="jdkn">
+<ul>
+<li><a href="https://openjdk.java.net/jeps/371">New JEP</a>: Hidden
+Classes</li>
+<li><a href="https://openjdk.java.net/jeps/378">New JEP</a>: Text
+Blocks</li>
+</ul>
+</div>
+<div class="jdkn">
+<ul>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8215401">New</a>:
+<code>isEmpty</code> Default Method to <code>CharSequence</code></li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8239383">New</a>:
+Support for Unicode 13.0</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8243099">New</a>:
+Support for <code>SO_INCOMING_NAPI_ID</code> Support</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8176894">New</a>:
+Specialized Implementations of <code>TreeMap</code> Methods</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8234484">New</a>:
+Ability to Configure Third Port for Remote JMX</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8196729">New</a>:
+Option Added to <code>jstatd</code> for Specifying RMI Connector Port
+Number</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8237354">New</a>:
+Option Added to <code>jcmd</code> for Writing a gzipped Heap Dump</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8196751">New</a>:
+Options Added to <code>jhsdb</code> for debugd Mode</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8242060">New</a>:
+Revocation Checking to <code>jarsigner</code></li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8172404">New</a>:
+Tools Warn If Weak Algorithms Are Used</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8172680">New</a>:
+SunJCE Provider Supports SHA-3 Based Hmac Algorithms</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8242141">New</a>:
+System Properties to Configure the TLS Signature Schemes</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8206925">New</a>:
+Support for <code>certificate_authorities</code> Extension</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8239385">New</a>:
+Support for <code>canonicalize</code> in <code>krb5.conf</code></li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8005819">New</a>:
+Support cross-realm MSSFU</li>
+</ul>
+</div>
+<div class="jdkr">
+<ul>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8244582">Removed</a>:
+Terminally Deprecated Solaris-specific <code>SO_FLOW_SLA</code> Socket
+Option</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8225319">Removed</a>:
+RMI Static Stub Compiler (<code>rmic</code>)</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8213222">Removed</a>:
+Deprecated Constant
+<code>RMIConnectorServer.CREDENTIAL_TYPES</code></li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8236933">Removed</a>:
+Nashorn JavaScript Engine</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8228991">Removed</a>:
+Obsolete <code>-XXUseAdaptiveGCBoundary</code></li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8225069">Removed</a>:
+Comodo Root CA Certificate</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8225068">Removed</a>:
+DocuSign Root CA Certificate</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8241039">Removed</a>:
+Retired the Deprecated <code>SSLSession.getPeerCertificateChain()</code>
+Method Implementation</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8219989">Removed</a>:
+<code>com.sun.net.ssl.internal.ssl.Provider</code> Name</li>
+</ul>
+</div>
+<div class="jdkd">
+<ul>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8245068">Deprecated</a>:
+RMI Activation for Removal</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8240995">Deprecated</a>:
+<code>NSWindowStyleMaskTexturedBackground</code></li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8243628">Deprecated</a>:
+<code>-XXForceNUMA</code> Option</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8231264">Deprecated</a>:
+Disabled Biased-locking and Deprecated Biased-locking Flags</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8237219">Deprecated</a>:
+Disabled Native SunEC Implementation by Default</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8242260">Deprecated</a>:
+Added <code>forRemoval=true</code> to Previously Deprecated
+<code>ContentSigner</code> APIs</li>
+</ul>
+</div>
+</section>
+<section id="jdk-14" class="level2">
+<h2>JDK 14</h2>
+<div class="jdkn">
+<ul>
+<li><a href="https://openjdk.java.net/jeps/345">New JEP</a>: NUMA-Aware
+Memory Allocation for G1</li>
+<li><a href="https://openjdk.java.net/jeps/349">New JEP</a>: JFR Event
+Streaming</li>
+<li><a href="https://openjdk.java.net/jeps/364">New JEP</a>: ZGC on
+macOS</li>
+<li><a href="https://openjdk.java.net/jeps/365">New JEP</a>: ZGC on
+Windows</li>
+<li><a href="https://openjdk.java.net/jeps/359">New JEP (Preview)</a>:
+Records</li>
+</ul>
+</div>
+<div class="jdkn">
+<ul>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8164993">New</a>:
+Clarify the Specification of <code>ReadableByteChannel.read()</code> and
+Related Methods</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8215181">New</a>:
+Accounting Currency Format Support</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8224666">New</a>:
+Parallel GC Improvements</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8230814">New</a>:
+Method to SAX <code>ContentHandler</code> for Handling XML
+Declaration</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8231507">New</a>:
+Apache Santuario Library Updated to Version 2.1.4</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8233228">New</a>:
+Weak Named Curves in TLS, CertPath, and Signed JAR Disabled by
+Default</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8234211">New</a>:
+Allow Discoverable <code>javac</code> Plugins to be Invoked by
+Default</li>
+</ul>
+</div>
+<div class="jdkr">
+<ul>
+<li><a href="https://openjdk.java.net/jeps/363">Removed</a>: Concurrent
+Mark and Sweep (CMS) Garbage Collector</li>
+<li><a href="https://openjdk.java.net/jeps/367">Removed</a>: Pack200
+Tools and API</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8191138">Removed</a>:
+Deprecated <code>java.security.acl</code> APIs</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8214024">Removed</a>:
+Default <code>keytool</code> <code>-keyalg</code> Value</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8222563">Removed</a>:
+<code>netscape.javascript.JSObjectgetWindow</code> Method</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8229960">Removed</a>:
+<code>sun.nio.cs.map</code> System Property</li>
+</ul>
+</div>
+<div class="jdkd">
+<ul>
+<li><a href="https://openjdk.java.net/jeps/366">Deprecated</a>: Parallel
+Scavenge and Serial Old GC Algorithm Combination</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8231602">Deprecated</a>:
+Thread Suspend&thinsp;/&thinsp;Resume Are Deprecated for Removal</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8240995">Deprecated</a>:
+<code>NSWindowStyleMaskTexturedBackground</code></li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8234924">Deprecated</a>:
+Legacy Elliptic Curves for Removal</li>
+<li><a
+href="https://bugs.java.com/bugdatabase/view_bug.do?bug_id=JDK-8234870">Deprecated</a>:
+<code>OracleUcrypto</code> JCE Provider for Removal</li>
+</ul>
+</div>
+</section>
+</article>
+</body>
+</html>
