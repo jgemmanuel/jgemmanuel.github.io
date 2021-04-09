@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <meta name="author" content="J G Emmanuel">
+  <meta name="dcterms.date" content="2021-04-09">
+  <title>Angular Version History</title>
+  <style type="text/css">code{white-space: pre;}</style>
+  <link rel="stylesheet" href="../tufte-css/tufte.min.css">
+  <link rel="stylesheet" href="../tufte.pandoc.css">
+  <script defer=""
+  src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: true
+   });
+}}});
+  </script>
+  <link rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css" />
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+  <style>.an>ul,.ar>ul{padding-left:0;}.an li,.ar li{list-style-type:none;}.an a{color:#068b78;}.ar a{color:#a21232;}</style>
+</head>
+<body>
+<article>
+<header>
+<h1 class="title">Angular Version History</h1>
+<p class="byline">2021-04-09 &ndash; J G Emmanuel</p>
+</header>
+<section>
+</section>
+<section id="angular-13" class="level2">
+<h2>Angular 13</h2>
+<div class="an">
+<ul>
+<li><a href="https://github.com/angular/angular/pull/43740">New</a>:
+Modernization of the Angular Package Format (APF)</li>
+<li><a href="https://github.com/angular/angular/pull/43353">New</a>:
+Test module teardown enabled by default</li>
+<li><a
+href="https://github.com/angular/angular-cli/issues/21545">New</a>:
+Persistent build cache by default</li>
+<li><a href="https://github.com/angular/angular/pull/31187">New</a>:
+Correct parsing of query parameters by the default URL serializer</li>
+<li><a href="https://github.com/angular/angular/pull/41730">New</a>:
+<code>popstate</code> event now emitted by
+<code>simulateHashChange</code> in <code>SpyLocation</code> under
+<code>RouterTestingModule</code></li>
+<li><a href="https://github.com/angular/angular/pull/42952">New</a>:
+<code>FormControlStatus</code> type</li>
+<li><a href="https://github.com/angular/angular/pull/43087">New</a>:
+<code>null</code>&thinsp;/&thinsp;<code>undefined</code> values to
+<code>routerLink</code> disables navigation;
+<code>DebugElement.properties['href']</code> now returns full URL</li>
+<li><a href="https://github.com/angular/angular/pull/43496">New</a>:
+Router no longer replaces the browser URL when a new navigation cancels
+an ongoing navigation</li>
+<li><a href="https://github.com/angular/angular/pull/43668">New</a>:
+<code>SwUpdate#activateUpdate</code> and
+<code>SwUpdate#checkForUpdate</code> now returns
+<code>Promise&lt;boolean&gt;</code></li>
+<li><a href="https://github.com/angular/angular/pull/43791">New</a>:
+Recursively check child routes on route detachment&thinsp;/&thinsp;attachment</li>
+<li><a
+href="https://github.com/angular/angular-cli/issues/22159">New</a>:
+<code>import()</code> now treats scripts as ES modules</li>
+</ul>
+</div>
+<div class="ar">
+<ul>
+<li><a href="https://blog.angular.io/76c02f782aa4">Removed</a>: View
+Engine</li>
+<li><a
+href="https://github.com/angular/angular/issues/41840">Removed</a>: IE11
+Support</li>
+<li><a href="https://github.com/angular/angular/pull/43642">Removed</a>:
+Support for TypeScript versions older than 4.4.2</li>
+<li><a href="https://github.com/angular/angular/pull/43740">Removed</a>:
+Support for NodeJS versions older than 12.20.0</li>
+<li><a href="https://github.com/angular/angular/pull/43507">Removed</a>:
+<code>WrappedValue</code> class from <code>@angular/core</code></li>
+<li><a href="https://github.com/angular/angular/pull/43591">Removed</a>:
+Lazy routes using <code>string</code> for <code>loadChildren</code> and
+supporting classes to load <code>NgModuleFactory</code> at runtime</li>
+</ul>
+</div>
+</section>
+<section id="angular-12" class="level2">
+<h2>Angular 12</h2>
+<div class="an">
+<ul>
+<li>New: Ivy by default</li>
+<li><a
+href="https://github.com/angular/vscode-ng-language-service/pull/1279">New</a>:
+Ivy-based IDE language service enabled by default</li>
+<li>New: Angular CDK and Angular Material internally now use Sass module
+system</li>
+<li><a href="https://github.com/angular/angular-cli/pull/20096">New</a>:
+Critical CSS inlining enabled by default</li>
+<li><a href="https://github.com/angular/angular-cli/pull/20128">New</a>:
+<code>ng build</code> produce production bundle by default</li>
+<li><a href="https://github.com/angular/angular/pull/39063">New</a>:
+<code>&lt;input type="number"&gt;</code> trigger <code>min</code> and
+<code>max</code> validation for <code>formControl</code>,
+<code>formControlName</code>, and <code>ngModel</code> directives</li>
+</ul>
+</div>
+<div class="ar">
+<ul>
+<li><a href="https://github.com/angular/angular/pull/41158">Removed</a>:
+Support for TypeScript versions older than 4.2.3</li>
+<li>Removed: Support for <code>node-sass</code></li>
+<li><a
+href="https://github.com/angular/angular-cli/pull/20466">Removed</a>:
+Support for Webpack 4</li>
+</ul>
+</div>
+</section>
+</article>
+</body>
+</html>
