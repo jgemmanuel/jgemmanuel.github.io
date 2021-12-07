@@ -1,0 +1,54 @@
+/* Smart quotes */
+q { quotes: "“" "”" "‘" "’"; }
+[lang="en-GB"] q { quotes: "‘" "’" "“" "”"; }
+
+/* Override section behavior to support --section-divs. */
+section { padding-top: initial; padding-bottom: initial; }
+article > section { padding-top: 1rem; padding-bottom: 1rem; }
+
+/* Make byline (date and/or author) small */
+p.byline { font-size: 1.2rem; }
+
+/* Simulate Pandoc's table output styles */
+table { border-top: 2px solid black; border-bottom: 2px solid black; }
+th { border-bottom: 1px solid black; }
+td, th { font-size: 1.4rem; padding: 10px; text-align: left; }
+
+/* Full width tables */
+figure.fullwidth table { width: 90%; }
+@media (max-width: 760px) {
+    figure.fullwidth table { width: 100%; }
+}
+
+/* Code blocks
+ *
+ * Code blocks with a language: div.sourceCode > pre.sourceCode
+ * Otherwise, it's just a pre */
+div.sourceCode, pre:not(.sourceCode) { padding: 1.4rem; margin: -0.7rem -1.4rem; width: 55%; font-size: 0.9rem; overflow-x: auto; }
+div.sourceCode code, pre:not(.sourceCode) code { font-size: 0.9rem; width: auto; }
+.fullwidth div.sourceCode, .fullwidth pre:not(.sourceCode) { width: 100%; }
+@media (max-width: 760px) {
+    div.sourceCode, pre:not(.sourceCode) { width: 100%; }
+}
+
+/* Math */
+section > .math.display > mjx-container[jax="CHTML"][display="true"] { width: 55%; }
+.MathJax { font-size: 1.4rem !important; }
+.katex { font-size: 1em !important; }
+
+/* Introduce forth heading level */
+h4 { font-size: 1.45rem; font-variant: small-caps; font-weight: 400; line-height: 1; margin-bottom: 1.4rem; margin-top: 1.9rem; text-transform: lowercase; }
+
+/* Bibliography */
+.csl-bib-body { width: 88%; }
+.csl-entry { line-height: 1.35; display: grid; grid-template-columns: max-content 1fr; }
+.csl-entry + .csl-entry { margin-top: 0.7rem; }
+.csl-entry a { word-wrap: break-word; overflow-wrap: break-word; }
+.csl-left-margin { clear: left; float: left; width: 2em; }
+.csl-right-inline { margin-left: 0; }
+
+/* Footnotes */
+.footnote-ref { line-height: 1; }
+
+/* Description list */
+section > dl { display: grid; grid-template-columns: max-content 1fr; }
